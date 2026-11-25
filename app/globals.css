@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Pretendard', ui-sans-serif, system-ui, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --color-brand-50: #eef6ff;
+  --color-brand-100: #d9eaff;
+  --color-brand-500: #2f6fed;
+  --color-brand-600: #2259cc;
+  --color-brand-700: #1c47a3;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+.card {
+  @apply rounded-xl border border-slate-200 bg-white p-5 shadow-sm;
+}
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-50;
+}
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 disabled:opacity-50;
+}
+.btn-danger {
+  @apply inline-flex items-center justify-center rounded-lg bg-red-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-red-700 disabled:opacity-50;
+}
+.input {
+  @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100;
+}
+.label {
+  @apply mb-1 block text-sm font-medium text-slate-700;
+}
+.table {
+  @apply w-full text-left text-sm;
+}
+.table th {
+  @apply border-b border-slate-200 px-3 py-2 font-semibold whitespace-nowrap text-slate-500;
+}
+.table td {
+  @apply border-b border-slate-100 px-3 py-2 whitespace-nowrap;
+}
+.badge {
+  @apply inline-block rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700;
+}
+.h1 {
+  @apply text-2xl font-bold tracking-tight;
+}
