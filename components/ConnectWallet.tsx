@@ -10,15 +10,29 @@ export default function ConnectWallet() {
   const { disconnect } = useDisconnect();
   const { switchChain } = useSwitchChain();
 
+  // EIP-6963으로 감지된 지갑 중 MetaMask 우선
+  const connector = connectors.find((c) => c.id === 'io.metamask') ?? connectors[0];
+
+  if (!isConnected && !connector)
+    return (
+      <p className="text-sm text-slate-600">
+        MetaMask가 감지되지 않았습니다.{' '}
+        <a href="https://metamask.io/download/" target="_blank" className="text-brand-600 underline">
+          MetaMask 설치
+        </a>{' '}
+        후 새로고침하세요. 모바일은 MetaMask 앱 안의 브라우저로 접속하세요.
+      </p>
+    );
+
   if (!isConnected)
     return (
       <div>
         <button
           className="btn-outline"
           disabled={isPending}
-          onClick={() => connectors[0] && connect({ connector: connectors[0], chainId: appChain.id })}
+          onClick={() => connector && connect({ connector, chainId: appChain.id })}
         >
-          {isPending ? '연결 중…' : 'MetaMask 연결'}
+          {isPending ? '연결 중…' : `${connector?.name ?? 'MetaMask'} 연결`}
         </button>
         {error && <p className="mt-1 text-xs text-red-600">{error.message.split('\n')[0]}</p>}
       </div>
