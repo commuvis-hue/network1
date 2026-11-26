@@ -12,6 +12,8 @@ export async function signIn(_: AuthState, formData: FormData): Promise<AuthStat
     email: String(formData.get('email') ?? ''),
     password: String(formData.get('password') ?? ''),
   });
+  if (error?.code === 'email_not_confirmed')
+    return { error: '이메일 인증이 아직 완료되지 않았습니다. 가입 시 받은 메일의 링크를 눌러주세요.' };
   if (error || !data.user) return { error: '이메일 또는 비밀번호가 올바르지 않습니다.' };
 
   const { data: profile } = await createAdminClient()

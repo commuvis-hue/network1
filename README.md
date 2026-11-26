@@ -16,7 +16,11 @@ Next.js(App Router) + Supabase + MetaMask(wagmi/viem)로 만든 **상품 판매 
 3. **Authentication → URL Configuration**
    - Site URL: 배포 주소 (예: `https://your-app.vercel.app`)
    - Redirect URLs: `https://your-app.vercel.app/auth/callback`, `http://localhost:3000/auth/callback`
-4. **Project Settings → API**에서 URL, `anon` 키, `service_role` 키 복사
+4. **Authentication → Emails → Confirm signup** 템플릿의 링크를 아래로 교체 (다른 기기에서 메일을 열어도 인증되도록)
+   ```html
+   <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email">이메일 인증하기</a>
+   ```
+5. **Project Settings → API**에서 URL, `anon` 키, `service_role` 키 복사
 
 ### Google 계정 가입/로그인 (선택)
 
